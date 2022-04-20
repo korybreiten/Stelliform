@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Planets/Shops/OrangeShop.gd" type="Script" id=1]
+[ext_resource path="res://Art/Planets/Shops/Shop2.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Shops" type="Sprite" parent="."]
+position = Vector2( 200, 100 )
+texture = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 83.0
+margin_top = 26.0
+margin_right = 172.0
+margin_bottom = 67.0
+shortcut_in_tooltip = false
+text = "EXIT"
+
+[node name="RocketSpeed" type="Button" parent="Control"]
+margin_left = 251.0
+margin_top = 80.0
+margin_right = 309.0
+margin_bottom = 119.0
+rect_rotation = -0.0527446
+focus_neighbour_left = NodePath("../Button")
+focus_neighbour_right = NodePath("../RocketReload")
+text = "SPEED"
+
+[node name="RocketReload" type="Button" parent="Control"]
+margin_left = 323.0
+margin_top = 80.0
+margin_right = 387.0
+margin_bottom = 118.0
+focus_neighbour_left = NodePath("../RocketSpeed")
+focus_neighbour_top = NodePath("../Button")
+text = "RELOAD"
+
+[node name="RocketSpeedLabel" type="Label" parent="Control"]
+modulate = Color( 0, 0.498039, 0.0313726, 1 )
+margin_left = 62.0
+margin_top = 160.0
+margin_right = 148.0
+margin_bottom = 174.0
+text = "Rocket Speed"
+
+[node name="RocketSpeedLabel2" type="Label" parent="Control"]
+modulate = Color( 0, 0.498039, 0.0313726, 1 )
+margin_left = 151.0
+margin_top = 160.0
+margin_right = 237.0
+margin_bottom = 174.0
+text = "0"
+
+[node name="RocketReloadLabel" type="Label" parent="Control"]
+modulate = Color( 0, 0.498039, 0.0313726, 1 )
+margin_left = 62.0
+margin_top = 176.0
+margin_right = 152.0
+margin_bottom = 190.0
+text = "Rocket Reload"
+
+[node name="RocketReloadLabel2" type="Label" parent="Control"]
+modulate = Color( 0, 0.498039, 0.0313726, 1 )
+margin_left = 155.0
+margin_top = 176.0
+margin_right = 245.0
+margin_bottom = 190.0
+text = "0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Control/RocketSpeed" to="." method="_on_RocketSpeed_pressed"]
+[connection signal="pressed" from="Control/RocketReload" to="." method="_on_RocketReload_pressed"]

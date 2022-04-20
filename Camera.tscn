@@ -1,0 +1,272 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Joystick/icon.png" type="Texture" id=1]
+[ext_resource path="res://Joystick/assets/joystick.gd" type="Script" id=2]
+[ext_resource path="res://Art/Races/Race1/Race1.png" type="Texture" id=3]
+[ext_resource path="res://Camera.gd" type="Script" id=4]
+[ext_resource path="res://Joystick/assets/aimstick.gd" type="Script" id=5]
+
+[node name="Camera2D" type="Camera2D"]
+pause_mode = 2
+position = Vector2( -200, -100 )
+anchor_mode = 0
+current = true
+script = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+scale = Vector2( 0.25, 0.25 )
+transform = Transform2D( 0.25, 0, 0, 0.25, 0, 0 )
+
+[node name="Control" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="move" type="Control" parent="UI/Control"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 130.0
+margin_top = 630.0
+margin_right = 159.0
+margin_bottom = 662.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="aim" type="Control" parent="UI/Control"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 1464.0
+margin_top = 630.0
+margin_right = 1493.0
+margin_bottom = 662.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
+
+[node name="Weapon_Button" type="TouchScreenButton" parent="UI/Control"]
+visible = false
+position = Vector2( 1420, 320 )
+scale = Vector2( 7.5, 7.5 )
+normal = ExtResource( 1 )
+action = "weapon"
+visibility_mode = 1
+
+[node name="Hull_Label" type="Label" parent="UI/Control"]
+margin_left = 204.0
+margin_top = 40.0
+margin_right = 250.0
+margin_bottom = 54.0
+rect_scale = Vector2( 2, 2 )
+text = "HULL"
+
+[node name="Hull_Bar" type="ProgressBar" parent="UI/Control"]
+margin_left = 308.0
+margin_top = 40.0
+margin_right = 376.0
+margin_bottom = 54.0
+rect_scale = Vector2( 2, 2 )
+value = 100.0
+
+[node name="Weapon_Label" type="Label" parent="UI/Control"]
+margin_left = 204.0
+margin_top = 116.0
+margin_right = 262.0
+margin_bottom = 130.0
+rect_scale = Vector2( 2, 2 )
+text = "WEAPON"
+
+[node name="Weapon" type="Label" parent="UI/Control"]
+margin_left = 328.0
+margin_top = 116.0
+margin_right = 386.0
+margin_bottom = 130.0
+rect_scale = Vector2( 2, 2 )
+text = "Rocket"
+align = 2
+valign = 1
+
+[node name="Shield_Label" type="Label" parent="UI/Control"]
+margin_left = 204.0
+margin_top = 80.0
+margin_right = 250.0
+margin_bottom = 94.0
+rect_scale = Vector2( 2, 2 )
+text = "SHIELD"
+
+[node name="Shield_Bar" type="ProgressBar" parent="UI/Control"]
+margin_left = 308.0
+margin_top = 80.0
+margin_right = 376.0
+margin_bottom = 94.0
+rect_scale = Vector2( 2, 2 )
+value = 100.0
+
+[node name="Score_Label" type="Label" parent="UI/Control"]
+margin_left = 1292.0
+margin_top = 44.0
+margin_right = 1333.0
+margin_bottom = 58.0
+rect_scale = Vector2( 2, 2 )
+text = "SCORE"
+valign = 1
+
+[node name="Score" type="Label" parent="UI/Control"]
+margin_left = 1388.0
+margin_top = 44.0
+margin_right = 1474.0
+margin_bottom = 58.0
+rect_scale = Vector2( 2, 2 )
+text = "0"
+valign = 1
+
+[node name="OrangeButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="BlueButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="GreenButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="PurpleButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="YellowButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="RedButton" type="Button" parent="UI/Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 680.0
+margin_top = 600.0
+margin_right = 796.0
+margin_bottom = 638.0
+rect_scale = Vector2( 2, 2 )
+shortcut_in_tooltip = false
+action_mode = 0
+text = "ENTER PLANET"
+
+[node name="Race" type="Sprite" parent="UI/Control"]
+position = Vector2( 112, 88 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+
+[node name="PauseMenu" type="Popup" parent="UI/Control"]
+margin_left = 564.0
+margin_top = 256.0
+margin_right = 1040.0
+margin_bottom = 544.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/PauseMenu"]
+margin_right = 476.0
+margin_bottom = 292.0
+color = Color( 0.294118, 0.294118, 0.294118, 1 )
+
+[node name="ExitButton" type="Button" parent="UI/Control/PauseMenu/ColorRect"]
+margin_left = 142.0
+margin_top = 196.0
+margin_right = 237.0
+margin_bottom = 216.0
+rect_scale = Vector2( 2, 2 )
+text = "EXIT GAME"
+
+[node name="MenuButton" type="Button" parent="UI/Control/PauseMenu/ColorRect"]
+margin_left = 148.0
+margin_top = 112.0
+margin_right = 239.0
+margin_bottom = 132.0
+rect_scale = Vector2( 2, 2 )
+text = "MAIN MENU"
+
+[node name="ResumeButton" type="Button" parent="UI/Control/PauseMenu/ColorRect"]
+margin_left = 148.0
+margin_top = 36.0
+margin_right = 239.0
+margin_bottom = 56.0
+rect_scale = Vector2( 2, 2 )
+text = "RESUME"
+
+[node name="GameOver" type="Label" parent="UI/Control"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 600.0
+margin_top = 372.0
+margin_right = 676.0
+margin_bottom = 386.0
+rect_scale = Vector2( 5, 5 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="UI/Control/OrangeButton" to="." method="_on_OrangeButton_pressed"]
+[connection signal="pressed" from="UI/Control/BlueButton" to="." method="_on_BlueButton_pressed"]
+[connection signal="pressed" from="UI/Control/GreenButton" to="." method="_on_GreenButton_pressed"]
+[connection signal="pressed" from="UI/Control/PurpleButton" to="." method="_on_PurpleButton_pressed"]
+[connection signal="pressed" from="UI/Control/YellowButton" to="." method="_on_YellowButton_pressed"]
+[connection signal="pressed" from="UI/Control/RedButton" to="." method="_on_RedButton_pressed"]
+[connection signal="pressed" from="UI/Control/PauseMenu/ColorRect/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="UI/Control/PauseMenu/ColorRect/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="UI/Control/PauseMenu/ColorRect/ResumeButton" to="." method="_on_ResumeButton_pressed"]
