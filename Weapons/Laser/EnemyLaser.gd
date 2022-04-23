@@ -24,7 +24,7 @@ func _physics_process(delta):
 		if sprite.frame == 2:
 			queue_free()
 			
-	if start_pos.distance_to(global_position) > 100:
+	if start_pos.distance_to(global_position) > 200:
 		sprite.animation = "end"
 		sprite.playing = true
 

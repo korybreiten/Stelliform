@@ -53,7 +53,7 @@ func _physics_process(delta):
 		$Explosion.playing = true
 		queue_free()
 	
-	if global_position.distance_to(Persistence.player_track.global_position) < 100:
+	if global_position.distance_to(Persistence.player_track.global_position) < 200:
 		look_at(Persistence.player_track.global_position)
 		in_range = true
 	else:

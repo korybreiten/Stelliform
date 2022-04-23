@@ -100,8 +100,8 @@ func save():
 
 func _player_pos():
 	rng.randomize()
-	randx = rng.randf_range(300, 1700)
-	randy = rng.randf_range(300, 1700)
+	randx = rng.randf_range(900, 1100)
+	randy = rng.randf_range(900, 1100)
 	player_pos = Vector2(randx, randy)
 	
 func _enemy_pos():

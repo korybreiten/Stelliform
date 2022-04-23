@@ -20,7 +20,7 @@ func _physics_process(delta):
 	if explosion.frame == 2:
 		queue_free()
 	
-	if start_pos.distance_to(global_position) > 75:
+	if start_pos.distance_to(global_position) > 200:
 		explosion.visible = true
 		explosion.playing = true
 

@@ -8,7 +8,6 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Persistence.start_ship == 1:
 		GlobalCamera.get_node("UI/Control/Race").set_texture(load("res://Art/Races/Race1/Race1.png"))

@@ -19,7 +19,7 @@ func _physics_process(delta):
 	position += transform.x * speed * delta
 		
 	
-	if start_pos.distance_to(global_position) > Persistence.ballistic_max_range:
+	if start_pos.distance_to(global_position) > 200:
 		queue_free()
 
 func _on_Ballistic_body_entered(body):

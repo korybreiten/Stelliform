@@ -87,8 +87,16 @@ func _physics_process(delta):
 		
 		if aim_input:
 			$base.rotation = aim_direction.angle()
-		else:
+		elif Input.is_action_pressed("shoot"):
+			$base.look_at(get_global_mouse_position())
+		elif move_input:
 			$base.rotation = move_direction.angle()
+		
+
+			
+		
+		
+
 		
 		velocity = move_and_slide(move_input * SPEED * delta)
 		
@@ -108,7 +116,7 @@ func _physics_process(delta):
 			$base/Shield.visible = false
 			$base/Shield.playing = false
 		
-		if aim_input:
+		if aim_input or Input.is_action_pressed("shoot"):
 			shoot()
 				
 		if Input.is_action_just_pressed("weapon"):
@@ -129,6 +137,7 @@ func _physics_process(delta):
 			timer.start() #to start
 			can_charge = false
 			
+		
 func recharge():
 	shield_hp += 1
 	last_shield_hp = shield_hp
