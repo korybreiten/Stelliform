@@ -6,8 +6,9 @@ var randy = 0
 
 #General
 var scene = ""
-var score = 0
+var score = 1000
 var start_ship = 0
+var SPEED = 50
 var player_track = null
 
 
@@ -17,6 +18,20 @@ var purple_track = null
 var green_track = null
 var red_track = null
 var yellow_track = null
+
+var orange_buy1 = true
+var orange_buy2 = true
+var blue_buy1 = true
+var blue_buy2 = true
+var purple_buy1 = true
+var purple_buy2 = true
+var green_buy1 = true
+var green_buy2 = true
+var red_buy1 = true
+var red_buy2 = true
+var yellow_buy1 = true
+var yellow_buy2 = true
+
 
 #Positions
 var player_pos = Vector2.ZERO
@@ -74,19 +89,24 @@ var e6_score = true
 var weapon = "Ballistic"
 
 var rocket_speed = 100
-var rocket_dmg = 20
+var rocket_dmg = 15
 var rocket_timer = 1.0
-var rocket_max_range = 75
+var rocket_max_range = 100
 
-var ballistic_speed = 200
+var ballistic_speed = 100
 var ballistic_dmg = 5
-var ballistic_timer = 0.25
+var ballistic_timer = 0.50
 var ballistic_max_range = 100
 
 var laser_speed = 100
 var laser_dmg = 10
-var laser_timer = 0.5
+var laser_timer = 0.75
 var laser_max_range = 100
+
+var lightning_speed = 100
+var lightning_dmg = 10
+var lightning_timer = 0.75
+var lightning_max_range = 100
 
 func save():
 	var save_dict = {

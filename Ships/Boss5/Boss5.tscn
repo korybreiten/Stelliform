@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art/Effects/Explosion1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Ships/Boss5/Boss5.png" type="Texture" id=2]
-[ext_resource path="res://Ships/Player.gd" type="Script" id=3]
+[ext_resource path="res://Ships/Race1.gd" type="Script" id=3]
 [ext_resource path="res://Art/Effects/Explosion2.png" type="Texture" id=4]
 [ext_resource path="res://Art/Effects/Explosion3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Ships/Boss5/Thrust3.png" type="Texture" id=6]

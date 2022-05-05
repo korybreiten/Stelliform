@@ -101,16 +101,16 @@ margin_bottom = 94.0
 rect_scale = Vector2( 2, 2 )
 value = 100.0
 
-[node name="Score_Label" type="Label" parent="UI/Control"]
-margin_left = 1292.0
+[node name="Credits_Label" type="Label" parent="UI/Control"]
+margin_left = 1256.0
 margin_top = 44.0
-margin_right = 1333.0
+margin_right = 1320.0
 margin_bottom = 58.0
 rect_scale = Vector2( 2, 2 )
-text = "SCORE"
+text = "CREDITS $"
 valign = 1
 
-[node name="Score" type="Label" parent="UI/Control"]
+[node name="Credits" type="Label" parent="UI/Control"]
 margin_left = 1388.0
 margin_top = 44.0
 margin_right = 1474.0

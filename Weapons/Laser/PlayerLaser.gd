@@ -7,6 +7,7 @@ onready var pew = $Pew
 var dealer = null
 var only_once = true
 var start_pos = Vector2.ZERO
+var moving = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +20,9 @@ func _physics_process(delta):
 		start_pos = global_position
 		only_once = false
 		
-	position += transform.x * Persistence.laser_speed * delta
+	if moving:
+		position += transform.x * Persistence.laser_speed * delta
+		
 	if sprite.animation == "end":
 		if sprite.frame == 2:
 			queue_free()
@@ -39,4 +42,13 @@ func _on_Laser_body_entered(body):
 		sprite.animation = "end"
 		sprite.playing = true
 		explosion.visible = true
-		explosion.playing = true
+		moving = false
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.one_shot = true
+		timer.connect("timeout",self,"explode")
+		add_child(timer) #to process
+		timer.start() #to start
+		
+func explode():
+	queue_free()

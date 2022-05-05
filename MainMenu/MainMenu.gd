@@ -14,18 +14,32 @@ func _ready():
 	
 	Persistence.score = 0
 	Persistence.weapon = "Ballistic"
+	Persistence.SPEED = 50
+	
+	Persistence.orange_buy1 = true
+	Persistence.orange_buy2 = true
+	Persistence.blue_buy1 = true
+	Persistence.blue_buy2 = true
+	Persistence.purple_buy1 = true
+	Persistence.purple_buy2 = true
+	Persistence.green_buy1 = true
+	Persistence.green_buy2 = true
+	Persistence.red_buy1 = true
+	Persistence.red_buy2 = true
+	Persistence.yellow_buy1 = true
+	Persistence.yellow_buy2 = true
 	
 	Persistence.rocket_speed = 100
 	Persistence.rocket_dmg = 15
 	Persistence.rocket_timer = 1
-	Persistence.rocket_max_range = 75
+	Persistence.rocket_max_range = 100
 
 	Persistence.laser_speed = 100
 	Persistence.laser_dmg = 10
-	Persistence.laser_timer = 0.5
+	Persistence.laser_timer = 0.75
 	Persistence.laser_max_range = 100
 
-	Persistence.ballistic_speed = 200
+	Persistence.ballistic_speed = 300
 	Persistence.ballistic_dmg = 5
 	Persistence.ballistic_timer = 0.25
 	Persistence.ballistic_max_range = 100

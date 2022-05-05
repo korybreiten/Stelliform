@@ -156,6 +156,7 @@ func _ready():
 		
 		
 		var player = ship1.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player
@@ -218,6 +219,7 @@ func _ready():
 		
 		
 		var player = ship2.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player
@@ -277,6 +279,7 @@ func _ready():
 		
 		
 		var player = ship3.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player
@@ -336,6 +339,7 @@ func _ready():
 		
 		
 		var player = ship4.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player
@@ -395,6 +399,7 @@ func _ready():
 		
 		
 		var player = ship5.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player
@@ -454,6 +459,7 @@ func _ready():
 		
 		
 		var player = ship7.instance()
+		player.set_script(load("res://Ships/Race1.gd"))
 		add_child(player)
 		player.global_position = Persistence.player_pos
 		Persistence.player_track = player

@@ -7,6 +7,7 @@ var damage = 10
 var dealer = null
 var only_once = true
 var start_pos = Vector2.ZERO
+var moving = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,13 +23,19 @@ func _physics_process(delta):
 	
 	
 	speed += 1
-	position += transform.x * speed * delta
-	if explosion.frame == 2:
-		queue_free()
+	if moving:
+		global_position += transform.x * speed * delta
 	
 	if start_pos.distance_to(global_position) > Persistence.rocket_max_range:
 		explosion.visible = true
-		explosion.playing = true
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.one_shot = true
+		timer.connect("timeout",self,"explode")
+		add_child(timer) #to process
+		timer.start() #to start
+
+
 
 func _on_Rocket_body_entered(body):
 	if body != dealer:
@@ -40,4 +47,14 @@ func _on_Rocket_body_entered(body):
 			body.hull_hp -= Persistence.rocket_dmg
 			Persistence.score += Persistence.rocket_dmg
 		explosion.visible = true
-		explosion.playing = true
+		moving = false
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.one_shot = true
+		timer.connect("timeout",self,"explode")
+		add_child(timer) #to process
+		timer.start() #to start
+		
+func explode():
+	queue_free()
+

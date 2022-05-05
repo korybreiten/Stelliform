@@ -28,6 +28,7 @@ var randx = 0
 var randy = 0
 
 var counter = 0
+var stunned = false
 
 onready var rocket = load("res://Weapons/Rocket/EnemyRocket.tscn")
 onready var laser = load("res://Weapons/Laser/EnemyLaser.tscn")

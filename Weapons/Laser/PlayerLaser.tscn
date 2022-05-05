@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Weapons/Laser/PlayerLaser.gd" type="Script" id=1]
 [ext_resource path="res://Art/Laser/Laser5.png" type="Texture" id=2]
-[ext_resource path="res://Art/Effects/Explosion1.png" type="Texture" id=3]
-[ext_resource path="res://Art/Effects/Explosion2.png" type="Texture" id=4]
+[ext_resource path="res://Weapons/ExplosionShader.tres" type="Material" id=3]
 [ext_resource path="res://Art/Effects/Explosion3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Laser/Laser2.png" type="Texture" id=6]
 [ext_resource path="res://Art/Laser/Laser3.png" type="Texture" id=7]
@@ -27,16 +26,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 0.999993
-height = 8.00001
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 10.0
-} ]
+radius = 1.0
+height = 8.0
 
 [node name="Laser" type="Area2D" groups=["Projectile"]]
 collision_layer = 4
@@ -49,12 +40,13 @@ frames = SubResource( 1 )
 animation = "start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
+rotation = 1.57079
 shape = SubResource( 2 )
 
-[node name="Explosion" type="AnimatedSprite" parent="."]
+[node name="Explosion" type="Sprite" parent="."]
 visible = false
-frames = SubResource( 3 )
+material = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Pew" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )

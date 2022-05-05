@@ -6,7 +6,7 @@ var speed = 1
 var dealer = null
 var only_once = true
 var start_pos = Vector2.ZERO
-
+var moving = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -16,13 +16,17 @@ func _physics_process(delta):
 	
 	
 	speed += 1
-	position += transform.x * speed * delta
-	if explosion.frame == 2:
-		queue_free()
+	if moving:
+		position += transform.x * speed * delta
 	
-	if start_pos.distance_to(global_position) > 200:
+	if start_pos.distance_to(global_position) > 100:
 		explosion.visible = true
-		explosion.playing = true
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.one_shot = true
+		timer.connect("timeout",self,"explode")
+		add_child(timer) #to process
+		timer.start() #to start
 
 func _on_Rocket_body_entered(body):
 	if body != dealer:
@@ -34,4 +38,13 @@ func _on_Rocket_body_entered(body):
 			body.hull_hp -= 20
 			Persistence.score -= 20
 		explosion.visible = true
-		explosion.playing = true
+		moving = false
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.one_shot = true
+		timer.connect("timeout",self,"explode")
+		add_child(timer) #to process
+		timer.start() #to start
+		
+func explode():
+	queue_free()

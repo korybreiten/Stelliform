@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Planets/Shops/OrangeShop.gd" type="Script" id=1]
+[ext_resource path="res://Planets/Shops/BlueShop.gd" type="Script" id=1]
 [ext_resource path="res://Art/Planets/Shops/Shop2.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
@@ -41,7 +41,7 @@ margin_left = 2.0
 margin_top = 3.0
 margin_right = 94.0
 margin_bottom = 17.0
-text = "ROCKET SPEED"
+text = "ENGINE SPEED"
 
 [node name="UpgradeLabel2" type="Label" parent="Control/Display"]
 modulate = Color( 0, 0, 0, 1 )
@@ -74,14 +74,14 @@ margin_left = 4.99907
 margin_top = 1.0046
 margin_right = 53.9991
 margin_bottom = 15.0046
-text = "ROCKET"
+text = "ENGINE"
 
 [node name="Cost1" type="Label" parent="Control/Upgrade1"]
 margin_left = 11.977
 margin_top = 25.011
 margin_right = 52.977
 margin_bottom = 39.011
-text = "$100"
+text = "$200"
 
 [node name="Upgrade2" type="Button" parent="Control"]
 margin_left = 323.0
@@ -97,14 +97,14 @@ margin_left = 8.0
 margin_top = 1.0
 margin_right = 57.0
 margin_bottom = 15.0
-text = "ROCKET"
+text = "ENGINE"
 
 [node name="Cost2" type="Label" parent="Control/Upgrade2"]
 margin_left = 15.0
 margin_top = 25.0
 margin_right = 56.0
 margin_bottom = 39.0
-text = "$200"
+text = "$400"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

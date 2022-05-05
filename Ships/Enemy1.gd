@@ -9,6 +9,7 @@ var can_charge = true
 var in_range = false
 var projectile = null
 
+
 # HULL SYSTEMS
 var hull_hp = 100
 var shield_hp = 100
@@ -31,6 +32,8 @@ onready var rocket = load("res://Weapons/Rocket/EnemyRocket.tscn")
 onready var laser = load("res://Weapons/Laser/EnemyLaser.tscn")
 
 var do_once = true
+var stunned = false
+var stun_once = true
 
 func _ready():
 	add_to_group("Enemy")
@@ -53,18 +56,19 @@ func _physics_process(delta):
 		$Explosion.visible = true
 		$Explosion.playing = true
 		queue_free()
-	
-	if global_position.distance_to(Persistence.player_track.global_position) < 100:
-		look_at(Persistence.player_track.global_position)
-		in_range = true
-	else:
-		look_at(target)
-		in_range = false
 		
-	velocity = global_position.direction_to(target)
+	if !stunned:
+		if global_position.distance_to(Persistence.player_track.global_position) < 100:
+			look_at(Persistence.player_track.global_position)
+			in_range = true
+		else:
+			look_at(target)
+			in_range = false
+			
+		velocity = global_position.direction_to(target)
 	
-	if global_position.distance_to(target) > 5:
-		velocity = move_and_slide(velocity * SPEED * delta)
+		if global_position.distance_to(target) > 5:
+			velocity = move_and_slide(velocity * SPEED * delta)
 		
 	if velocity != Vector2.ZERO:
 		$base/Thrust.visible = true
@@ -82,7 +86,7 @@ func _physics_process(delta):
 		$base/Shield.visible = false
 		$base/Shield.playing = false
 		
-	if in_range:
+	if in_range and !stunned:
 		shoot()
 			
 	if can_charge and shield_hp < max_shield_hp:
@@ -93,6 +97,15 @@ func _physics_process(delta):
 		add_child(timer) #to process
 		timer.start() #to start
 		can_charge = false
+		
+	if stunned and stun_once == true:
+		var timer = Timer.new()
+		timer.set_wait_time(5)
+		timer.one_shot = true
+		timer.connect("timeout",self,"resume")
+		add_child(timer) #to process
+		timer.start() #to start
+		stun_once = false
 			
 func seek():
 	var dir = true
@@ -101,9 +114,9 @@ func seek():
 	rng.randomize()
 	randx = rng.randf_range(-randint, randint)
 	randy = rng.randf_range(-randint, randint)
-	
+
 	if target and in_range:
-		
+
 		if dir:
 			target = Persistence.player_track.global_position + Vector2(randx, randy)
 		if not dir:
@@ -142,3 +155,6 @@ func shoot():
 func shooting():
 	can_shoot = true
 
+func resume():
+	stun_once = true
+	stunned = false

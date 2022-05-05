@@ -17,6 +17,8 @@ func _process(_delta):
 		$UI/Control/PauseMenu/ColorRect/ResumeButton.grab_focus()
 		
 	
+	$UI/Control/Credits.text = str(Persistence.score)
+	
 	if $UI/Control/OrangeButton.visible:
 		$UI/Control/OrangeButton.grab_focus()
 
@@ -43,27 +45,27 @@ func _on_OrangeButton_pressed():
 
 func _on_BlueButton_pressed():
 	Persistence.player_pos = Persistence.player_track.global_position
-	get_tree().change_scene("res://Planets/Shops/OrangeShop.tscn")
+	get_tree().change_scene("res://Planets/Shops/BlueShop.tscn")
 
 
 func _on_GreenButton_pressed():
 	Persistence.player_pos = Persistence.player_track.global_position
-	get_tree().change_scene("res://Planets/Shops/OrangeShop.tscn")
+	get_tree().change_scene("res://Planets/Shops/GreenShop.tscn")
 
 
 func _on_PurpleButton_pressed():
 	Persistence.player_pos = Persistence.player_track.global_position
-	get_tree().change_scene("res://Planets/Shops/OrangeShop.tscn")
+	get_tree().change_scene("res://Planets/Shops/PurpleShop.tscn")
 
 
 func _on_YellowButton_pressed():
 	Persistence.player_pos = Persistence.player_track.global_position
-	get_tree().change_scene("res://Planets/Shops/OrangeShop.tscn")
+	get_tree().change_scene("res://Planets/Shops/YellowShop.tscn")
 
 
 func _on_RedButton_pressed():
 	Persistence.player_pos = Persistence.player_track.global_position
-	get_tree().change_scene("res://Planets/Shops/OrangeShop.tscn")
+	get_tree().change_scene("res://Planets/Shops/RedShop.tscn")
 
 
 func _on_ResumeButton_pressed():

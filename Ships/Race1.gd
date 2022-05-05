@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED = 50
+var SPEED = 50
 
 var move_direction = Vector2.RIGHT
 var aim_direction = Vector2.RIGHT
@@ -20,7 +20,6 @@ onready var pos = $base/Position2D
 onready var camera = GlobalCamera
 onready var hull_bar = GlobalCamera.get_node("UI/Control/Hull_Bar")
 onready var shield_bar = GlobalCamera.get_node("UI/Control/Shield_Bar")
-onready var score = GlobalCamera.get_node("UI/Control/Score")
 onready var weapon_type = GlobalCamera.get_node("UI/Control/Weapon")
 onready var control = GlobalCamera.get_node("UI/Control")
 var move_input = Vector2.ZERO
@@ -28,19 +27,19 @@ var velocity = Vector2.ZERO
 onready var rocket = load("res://Weapons/Rocket/PlayerRocket.tscn")
 onready var laser = load("res://Weapons/Laser/PlayerLaser.tscn")
 onready var ballistic = load("res://Weapons/Ballistic/PlayerBallistic.tscn")
+onready var lightning = load("res://Weapons/Lightning/PlayerLightning.tscn")
 
 func _ready():
 	GlobalCamera.current = true
 	control.visible = true
-
-
+	
 func _physics_process(delta):
-
+	SPEED = Persistence.SPEED
 	GlobalCamera.global_position = Vector2(global_position.x - 200, global_position.y - 100)
 	
 	hull_bar.value = hull_hp
 	shield_bar.value = shield_hp
-	score.set_text(str(Persistence.score))
+	
 	weapon_type.text = Persistence.weapon
 	
 	if hull_hp <= 0:
@@ -85,19 +84,15 @@ func _physics_process(delta):
 		if aim_input != Vector2.ZERO:
 			aim_direction = aim_input
 		
-		if aim_input:
+		if Input.get_joy_name(0) != "": # Controller
+			Input.set_mouse_mode(1)
 			$base.rotation = aim_direction.angle()
-		elif Input.is_action_pressed("shoot"):
+		elif Input.get_joy_name(0) == "": # Keyboard 
+			Input.set_mouse_mode(0)
 			$base.look_at(get_global_mouse_position())
 		elif move_input:
 			$base.rotation = move_direction.angle()
-		
-
 			
-		
-		
-
-		
 		velocity = move_and_slide(move_input * SPEED * delta)
 		
 		if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
@@ -106,7 +101,7 @@ func _physics_process(delta):
 		else:
 			$base/Thrust.visible = false
 			$base/Thrust.playing = false
-		
+			
 		if shield_hp < last_shield_hp:
 			last_shield_hp = shield_hp
 			$base/Shield.frame = 0
@@ -115,19 +110,20 @@ func _physics_process(delta):
 		if $base/Shield.frame == 3:
 			$base/Shield.visible = false
 			$base/Shield.playing = false
-		
+			
 		if aim_input or Input.is_action_pressed("shoot"):
 			shoot()
-				
+			
 		if Input.is_action_just_pressed("weapon"):
 			if Persistence.weapon == "Rocket":
 				Persistence.weapon = "Laser"
 			elif Persistence.weapon == "Laser":
 				Persistence.weapon = "Ballistic"
 			elif Persistence.weapon == "Ballistic":
+				Persistence.weapon = "Lightning"
+			elif Persistence.weapon == "Lightning":
 				Persistence.weapon = "Rocket"
 			
-					
 		if can_charge and shield_hp < max_shield_hp:
 			var timer = Timer.new()
 			timer.set_wait_time(1)
@@ -137,7 +133,6 @@ func _physics_process(delta):
 			timer.start() #to start
 			can_charge = false
 			
-		
 func recharge():
 	shield_hp += 1
 	last_shield_hp = shield_hp
@@ -177,15 +172,24 @@ func shoot():
 			
 			projectile = ballistic.instance()
 			
+		if Persistence.weapon == "Lightning":
+			var timer = Timer.new()
+			timer.set_wait_time(Persistence.lightning_timer)
+			timer.one_shot = true
+			timer.connect("timeout",self,"shooting")
+			add_child(timer) #to process
+			timer.start() #to start
+			
+			projectile = lightning.instance()
+			
 		get_tree().get_root().add_child(projectile)
 		projectile.global_transform = pos.global_transform
 		projectile.dealer = self
 		can_shoot = false
-		
+			
 func shooting():
 	can_shoot = true
-
+			
 func reload_scene():
 	GlobalCamera.get_node("UI/Control/GameOver").visible = true
 	get_tree().paused = true	
-

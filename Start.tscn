@@ -7,6 +7,8 @@
 script = ExtResource( 2 )
 
 [node name="TitleScreen" type="Sprite" parent="."]
+position = Vector2( -0.112053, 3.8147e-06 )
+scale = Vector2( 1.00306, 1.005 )
 texture = ExtResource( 1 )
 centered = false
 

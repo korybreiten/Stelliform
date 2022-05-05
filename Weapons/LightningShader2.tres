@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Weapons/Lightning/Lightning.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/lightning_color = Color( 1, 0.996078, 0.803922, 1 )
+shader_param/size = 0.095
+shader_param/width = 0.312
+shader_param/speed = 0.635
+shader_param/cycle = 0.456
+shader_param/ratio = 0.768
+shader_param/time_shift = 0.69
